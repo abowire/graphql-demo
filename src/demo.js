@@ -23,17 +23,3 @@ async function createCustomer(data) {
 async function subscribe(customerId, productId) {
   return abowire.mutate(SUBSCRIBE_CUSTOMER_TO_PLAN, { customerId, productId });
 }
-
-// Demo calls
-// getCustomers()
-//   .then((customers) => {
-//     const html = customers
-//       .map((customer) => `<li>${customer.email}</li>`)
-//       .join("");
-
-//     document.getElementById("customers").innerHTML = html;
-//   })
-// .then(
-createCustomer({ email: "mail+111@alanreid.de" })
-  // )
-  .catch((err) => console.error(err));
