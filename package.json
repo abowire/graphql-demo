@@ -1,0 +1,19 @@
+{
+  "name": "abowire-graphql-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "Abowire GmbH <tech@abowire.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/client": "^3.4.17",
+    "graphql": "^15.7.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
+}
