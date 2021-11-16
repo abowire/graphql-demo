@@ -5,8 +5,8 @@ const {
   SUBSCRIBE_CUSTOMER_TO_PLAN,
 } = require("./abowire/graphql/customers");
 
-const ABOWIRE_TOKEN =
-  "vSVcKTAyre37K3xkNxT5xo6dctjAaA99XqEWxrwjTTs.hto5kUyC20vcHt55E4zrkgM7Eq5FZ37ZMNGSViFQ0pY";
+// Get this token from the backend
+const ABOWIRE_TOKEN = "";
 
 const abowire = new Abowire(ABOWIRE_TOKEN);
 
