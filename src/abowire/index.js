@@ -1,4 +1,9 @@
 const { ApolloClient, InMemoryCache } = require("@apollo/client/core");
+const {
+  CREATE_CUSTOMER,
+  GET_CUSTOMERS,
+  SUBSCRIBE_CUSTOMER_TO_PLAN,
+} = require("./graphql/customers");
 
 class Abowire {
   constructor(accessToken) {
@@ -31,6 +36,23 @@ class Abowire {
     });
 
     return result.data;
+  }
+
+  async getCustomers(page = 1) {
+    const result = await this.query(GET_CUSTOMERS, { page });
+
+    return result.customers.items;
+  }
+
+  async createCustomer(data) {
+    return this.mutate(CREATE_CUSTOMER, { data });
+  }
+
+  async subscribe(customerId, productId) {
+    return this.mutate(SUBSCRIBE_CUSTOMER_TO_PLAN, {
+      customerId,
+      productId,
+    });
   }
 }
 
