@@ -70,7 +70,7 @@ async function onSubscribeClick() {
   }
 }
 
-// Event handler for the "attache payment method" button
+// Event handler for the "attach payment method" button
 async function onPaymentMethodClick() {
   if (!customer) {
     return;
