@@ -30,6 +30,29 @@ const CREATE_CUSTOMER = gql`
       id
       email
       name
+      billingProfile {
+        type
+      }
+      metadata
+      locale
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+const CREATE_WIRE_TRANSFER = gql`
+  mutation subscriptionAddWireTransferReference($id: SubscriptionID!) {
+    subscriptionAddWireTransferReference(id: $id) {
+      id
+      name
+      price
+      usage
+      status
+      currentPeriodStart
+      currentPeriodEnd
+      currentPeriod
+      createdAt
     }
   }
 `;
@@ -50,8 +73,25 @@ const SUBSCRIBE_CUSTOMER_TO_PLAN = gql`
   }
 `;
 
+const GET_CUSTOMER_INVOICES = gql`
+  query getCustomerInvoices($id: CustomerID!) {
+    id
+    email
+    name
+    invoices {
+      id
+      subscription {
+        id
+      }
+      createdAt
+    }
+  }
+`;
+
 module.exports = {
   GET_CUSTOMERS,
   CREATE_CUSTOMER,
+  CREATE_WIRE_TRANSFER,
   SUBSCRIBE_CUSTOMER_TO_PLAN,
+  GET_CUSTOMER_INVOICES,
 };

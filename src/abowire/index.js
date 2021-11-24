@@ -3,6 +3,8 @@ const {
   CREATE_CUSTOMER,
   GET_CUSTOMERS,
   SUBSCRIBE_CUSTOMER_TO_PLAN,
+  GET_CUSTOMER_INVOICES,
+  CREATE_WIRE_TRANSFER,
 } = require("./graphql/customers");
 
 class Abowire {
@@ -46,6 +48,16 @@ class Abowire {
 
   async createCustomer(data) {
     return this.mutate(CREATE_CUSTOMER, { data });
+  }
+
+  async addPaymentMethod(_, { subscriptionId }) {
+    return this.mutate(CREATE_WIRE_TRANSFER, { id: subscriptionId });
+  }
+
+  async getCustomerInvoices(id) {
+    const result = await this.query(GET_CUSTOMER_INVOICES, { id });
+
+    return result.data;
   }
 
   async subscribe(customerId, productId) {
