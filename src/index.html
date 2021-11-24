@@ -3,12 +3,47 @@
   <head>
     <meta charset="utf-8" />
     <title>Abowire GraphQL</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      #buttons {
+        margin: 0;
+        padding: 5px;
+      }
+
+      button {
+        border: 1px solid #ffffff;
+        background-color: #000000;
+        color: #ffffff;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      pre {
+        width: 100%;
+        height: 90vh;
+        overflow: scroll;
+        background-color: #000000;
+        color: #ffffff;
+        margin: 0;
+        padding: 20px;
+      }
+    </style>
   </head>
   <body>
     <script type="module" src="./demo.js"></script>
 
-    <button id="create-customer">Create a customer</button>
+    <div id="buttons">
+      <button id="get-customers">Get customer list</button>
+      <button id="create-customer">Create a customer</button>
+      <button id="subscribe-customer">Subscribe a customer to a plan</button>
+      <button id="customer-payment-method">Attach payment method</button>
+      <button id="customer-invoices">Get customer invoices</button>
+    </div>
 
-    <ul id="customers"></ul>
+    <pre id="status"></pre>
   </body>
 </html>

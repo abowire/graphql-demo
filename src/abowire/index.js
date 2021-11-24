@@ -47,24 +47,32 @@ class Abowire {
   }
 
   async createCustomer(data) {
-    return this.mutate(CREATE_CUSTOMER, { data });
+    const result = await this.mutate(CREATE_CUSTOMER, { data });
+
+    return result.customerCreate;
   }
 
   async addPaymentMethod(_, { subscriptionId }) {
-    return this.mutate(CREATE_WIRE_TRANSFER, { id: subscriptionId });
+    const result = await this.mutate(CREATE_WIRE_TRANSFER, {
+      id: subscriptionId,
+    });
+
+    return result.subscriptionAddWireTransferReference;
   }
 
   async getCustomerInvoices(id) {
     const result = await this.query(GET_CUSTOMER_INVOICES, { id });
 
-    return result.data;
+    return result.customer;
   }
 
   async subscribe(customerId, productId) {
-    return this.mutate(SUBSCRIBE_CUSTOMER_TO_PLAN, {
+    const result = await this.mutate(SUBSCRIBE_CUSTOMER_TO_PLAN, {
       customerId,
       productId,
     });
+
+    return result.customerSubscribe;
   }
 }
 

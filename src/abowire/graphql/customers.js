@@ -25,7 +25,7 @@ const GET_CUSTOMERS = gql`
 `;
 
 const CREATE_CUSTOMER = gql`
-  mutation CreateCustomer($data: CustomerCreateDTO) {
+  mutation CreateCustomer($data: CustomerCreateDTO!) {
     customerCreate(data: $data) {
       id
       email
@@ -74,16 +74,18 @@ const SUBSCRIBE_CUSTOMER_TO_PLAN = gql`
 `;
 
 const GET_CUSTOMER_INVOICES = gql`
-  query getCustomerInvoices($id: CustomerID!) {
-    id
-    email
-    name
-    invoices {
+  query customer($id: CustomerID!) {
+    customer(id: $id) {
       id
-      subscription {
+      email
+      name
+      invoices {
         id
+        subscription {
+          id
+        }
+        createdAt
       }
-      createdAt
     }
   }
 `;
